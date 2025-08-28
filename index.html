@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Contador Benner</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background: #f0f0f0;
-    }
-    .contador {
-      font-size: 28px;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-    .extra {
-      font-size: 20px;
-      color: #16a085;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="contador" id="mensagem">
-    Carregando contador...
-  </div>
-  <div class="extra">☕</div>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contagem Regressiva</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Contagem Regressiva</h1>
+            <div id="contador">
+                <span id="dias">00</span>d :
+                <span id="horas">00</span>h :
+                <span id="minutos">00</span>m :
+                <span id="segundos">00</span>s :
+                <span id="milissegundos">00</span>ms
+            </div>
+        </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+        <script src="script.js"></script>
+    </body>
+    </html>
