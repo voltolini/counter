@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Contador Benner</title>
+<style>
+  body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .contador-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 3em;
+    background: #2c2c2c;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    gap: 15px;
+  }
+
+  .texto-esquerda, .texto-direita {
+    font-weight: bold;
+    font-size: 0.6em;
+    color: #ffcc00;
+    white-space: nowrap;
+  }
+
+  #dias, #horas, #minutos, #segundos {
+    background: #ff6600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    min-width: 60px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255,102,0,0.7);
+  }
+
+  .mensagem {
+    margin-top: 40px;
+    font-size: 1.8em;
+    color: #00ffcc;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="contador-wrapper">
+  <span class="texto-esquerda">SEM PARADAS DO BENNER</span>
+  <span id="dias">00</span>:<span id="horas">00</span>:<span id="minutos">00</span>:<span id="segundos">00</span>
+  <span class="texto-direita">ESTAMOS HÁ</span>
+</div>
+
+<div class="mensagem">
+  <br><br>
+  Podemos ir tomar um café tranquilinhos ☕
+</div>
+
+<script>
+// Data inicial fixa
+const dataInicial = new Date("2025-08-27T06:00:00").getTime();
+
+const intervalo = setInterval(() => {
+    const agora = new Date().getTime();
+    const distancia = agora - dataInicial; // diferença do agora para a data inicial
+
+    // Cálculo dos tempos
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Atualização do HTML
+    document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+    document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+    document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+    document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+}, 1000);
+</script>
+
+</body>
+</html>
