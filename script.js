@@ -1,0 +1,26 @@
+    const dataFinal = new Date("2025-12-31T23:59:59").getTime(); // Defina a sua data final aqui
+
+    const intervalo = setInterval(() => {
+        const agora = new Date().getTime();
+        const distancia = dataFinal - agora;
+
+        // Cálculo dos tempos
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+        const milissegundos = distancia % 1000;
+
+        // Atualização do HTML
+        document.getElementById("dias").innerText = dias < 10 ? "0" + dias : dias;
+        document.getElementById("horas").innerText = horas < 10 ? "0" + horas : horas;
+        document.getElementById("minutos").innerText = minutos < 10 ? "0" + minutos : minutos;
+        document.getElementById("segundos").innerText = segundos < 10 ? "0" + segundos : segundos;
+        document.getElementById("milissegundos").innerText = String(milissegundos).padStart(3, '0');
+
+        // Se a contagem acabar, limpa o intervalo
+        if (distancia < 0) {
+            clearInterval(intervalo);
+            document.getElementById("contador").innerText = "Contagem concluída!";
+        }
+    }, 1); // Atualiza a cada milissegundo
